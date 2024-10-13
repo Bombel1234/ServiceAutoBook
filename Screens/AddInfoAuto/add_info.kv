@@ -1,0 +1,77 @@
+<BlockTextInput@MDTextField>
+    hint_text_color_normal: "red"
+    text_color_normal:'red'
+    line_color_normal:1,0,0,1
+    mode:'rectangle'
+
+<AddInfo>
+    MDBoxLayout:
+        orientation:'vertical'
+        MDTopAppBar:
+            id:back
+            left_action_items:[["arrow-left", root.back_screen_info]]
+        ScrollView:
+            MDBoxLayout:
+                adaptive_height:True
+                orientation:'vertical'
+                padding:'20dp'
+                spacing:'25sp'
+                BlockTextInput:
+                    id:km
+                    font_size:'30sp'
+                    line_width:4
+                    input_filter:'int'
+                BlockTextInput:
+                    id:work
+                    multiline:True
+                    font_size:'20dp'
+                BlockTextInput:
+                    id:cena
+                    font_size:'30sp'
+                    line_width:4
+                    input_filter:'int'
+                MDGridLayout:
+                    adaptive_height:True
+                    cols:1
+                    spacing:'32sp'
+                    padding:'50dp', 0
+                    MDFillRoundFlatIconButton:
+                        id:value_day
+                        on_release:root.open_calendar()
+                        line_width:2
+                        font_size:'25dp'
+                        size_hint_x:1
+
+                    MDFillRoundFlatIconButton:
+                        id:btn_save
+                        icon: "plus"
+                        font_size:'25sp'
+                        line_width:2
+                        size_hint_x:1
+                        on_release:root.save_data_in_baza(km.text, work.text, cena.text)
+                MDBoxLayout:
+                    id:box_photo
+                    size_hint: 1, None
+                    height: dp(250)
+                    
+                    # FitImage:
+                    #     id:img
+                    #     size_hint: 1, None
+                    #     height:'250dp'
+                    #     fit_mode:'scale-down'
+                    #     canvas.before:
+                    #         PushMatrix
+                    #         Rotate:
+                    #             angle: -90
+                    #             origin: self.center
+                    #     canvas.after:
+                    #         PopMatrix
+                        
+
+                    
+                
+
+
+
+
+

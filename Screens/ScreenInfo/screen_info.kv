@@ -1,0 +1,124 @@
+#:import SlideTransition kivy.uix.screenmanager.SlideTransition
+
+<ScreenInfo>
+    MDBoxLayout:
+        orientation:'vertical'
+        id:box
+        MDTopAppBar:
+            id:text_toolbar
+            right_action_items: [["close", root.back_screen_logo]]
+        MDBoxLayout:
+            orientation:'vertical'
+            padding:0,'30dp',0,0
+            MDBoxLayout:
+                adaptive_height:True
+                padding:0, '30dp'
+                MDLabel:
+                    id:name_auto
+                    halign:'center'
+                    adaptive_height:True
+                    font_name:'assets/font/lato/Lato-Black.ttf'
+                    font_size:'40sp'
+            MDBoxLayout:
+                adaptive_height:True
+                padding:0, '30dp', 0, '50dp'
+                MDAnchorLayout:
+                    MDFillRoundFlatIconButton:
+                        id:btn_add_info
+                        size_hint_x:.5
+                        icon:'plus'
+                        font_size:'20sp'
+                        on_release:
+                            app.sm.transition = SlideTransition()
+                            app.sm.transition.direction = 'left'
+                            app.sm.current = 'adding_info'
+
+            ScrollView:
+                MDBoxLayout:
+                    id:container_card
+                    adaptive_height:True
+                    orientation:'vertical'
+                    padding:20
+                    spacing:50
+
+
+
+
+<MyCard>:
+    padding: 30
+    size_hint_y:None
+    height:work.height + 800
+
+    elevation: 6
+    focus_behavior: True
+    md_bg_color:"#FF71B5"
+    unfocus_color: "#FF71B5"
+    focus_color: "#BA71CB"
+    shadow_color: .36,.85,.40, 1
+
+    MDBoxLayout:
+        id:box1
+        orientation:'vertical'
+        spacing:40
+        pos_hint:{'center_x':.5, 'center_y':.5}
+        MDLabel:
+            id:dat
+            text:root.data
+            halign:'center'
+            font_size:'30sp'
+            adaptive_height:True
+        MDLabel:
+            id:lab1
+            halign:'center'
+            font_size:'20sp'
+            adaptive_height:True
+        MDBoxLayout:
+            adaptive_height:True
+            padding:'20dp'
+            md_bg_color:.71,.69,.70,1
+            canvas.before:
+                Color:
+                    rgba:.11,.14,.71,1
+                Line:
+                    width: 2
+                    rectangle: self.x, self.y, self.width, self.height
+            MDLabel:
+                id:work
+                adaptive_height:True
+                text:root.work
+        GridLayout:
+            cols:2
+            MDLabel:
+                id:lab2
+                halign:'center'
+                adaptive_height:True
+                font_size:'20sp'
+            MDLabel:
+                id:km
+                text:root.km
+                halign:'center'
+                adaptive_height:True
+                font_size:'20sp'
+            MDLabel:
+                id:lab3
+                halign:'center'
+                adaptive_height:True
+                font_size:'20sp'
+            MDLabel:
+                id:cena
+                text:root.cena
+                halign:'center'
+                adaptive_height:True
+                font_size:'20sp'
+        AnchorLayout:
+            MDFillRoundFlatButton:
+                id:button
+                font_size:'20sp'
+                on_release:
+                    root.parent.parent.parent.parent.parent.click_btn_card(cena.text, \
+                    km.text, work.text, dat.text)
+
+
+
+
+
